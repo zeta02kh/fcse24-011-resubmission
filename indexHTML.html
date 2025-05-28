@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wings of Valor - WWII Aircraft Museum</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+
+        .content {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .header {
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .header p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            border-radius: 5px;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-5px);
+        }
+
+        footer {
+            position: absolute;
+            bottom: 20px;
+            color: white;
+            font-size: 0.9rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .nav-item {
+                padding: 0.8rem 1rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop class="video-background">
+        <source src="WW2 Eastern front in colour - voiced footage.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="content">
+        <div class="header">
+            <h1>Wings of Valor</h1>
+            <p>Explore the legendary aircraft that shaped the course of World War II in our immersive museum experience.</p>
+        </div>
+
+        <div class="nav-container">
+            <div class="nav-item" onclick="location.href='about.html'">About</div>
+            <div class="nav-item" onclick="location.href='gallery.html'">Gallery</div>
+            <div class="nav-item" onclick="location.href='nations.html'">Nations</div>
+            <div class="nav-item" onclick="location.href='contact us.html'">Contact</div>
+        </div>
+
+        <footer>
+            &copy; 2023 Wings of Valor WWII Aircraft Museum | All Rights Reserved
+        </footer>
+    </div>
+
+    <script>
+        // Simple click handlers for demonstration
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // In a real implementation, this would navigate to different sections
+                alert(`Navigating to ${this.textContent} section`);
+            });
+        });
+    </script>
+</body>
+</html>
