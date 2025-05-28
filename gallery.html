@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WW2 Aircraft Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #111;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+        
+        header {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #e74c3c;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .aircraft-card {
+            background-color: rgba(30, 30, 30, 0.8);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid #444;
+        }
+        
+        .aircraft-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .aircraft-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #444;
+        }
+        
+        .aircraft-info {
+            padding: 1.5rem;
+        }
+        
+        .aircraft-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #e74c3c;
+        }
+        
+        .aircraft-nation {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .usa { background-color: #3498db; }
+        .soviet { background-color: #e74c3c; }
+        .nazi { background-color: #777; }
+        .japan { background-color: #f39c12; }
+        
+        .key-points {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .key-points li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .battles {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+        
+        .battles h4 {
+            margin-bottom: 0.5rem;
+            color: #ccc;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 100;
+            overflow: auto;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+            max-width: 900px;
+            margin: 2rem auto;
+            background-color: rgba(30, 30, 30, 0.95);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #444;
+        }
+        
+        .modal-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+        }
+        
+        .modal-info {
+            padding: 2rem;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close:hover {
+            color: #e74c3c;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                margin: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="WW2_ Real Footage, No Music, Pure Sound.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <header>        <div class="container">
+            <nav>
+                <div class="logo">Wings of Hope Museum</div>
+                <ul class="nav-links">
+                    <li><a href="indexHTML.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="nation.html">Nation</a></li>
+                    <li><a href="contact us.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <h1>WW2 Aircraft Gallery</h1>
+        <p class="subtitle">Iconic warplanes of the Second World War</p>
+    </header>
+    
+    <div class="gallery">
+        <!-- United States -->
+        <div class="aircraft-card" onclick="openModal('p51', 'P-51 Mustang', 'usa')">
+            <img src="img/p-51 pic1.jpg" alt="P-51 Mustang" class="aircraft-image">
+            <div class="aircraft-info">
+                <h3 class="aircraft-name">P-51 Mustang</h3>
+                <span class="aircraft-nation usa">United States</span>
+                <ul class="key-points">
+                    <li>Range: 1,650 miles with external tanks</li>
+                    <li>Max Speed: 437 mph</li>
+                    <li>Armament: 6 × .50 caliber M2 Browning machine guns</li>
+                </ul>
+                <div class="battles">
+                    <h4>Key Battles:</h4>
+                    <p>• Battle of Berlin (1944-45) - Escorted bombers on raids</p>
+                    <p>• Operation Overlord (1944) - Provided air superiority during D-Day</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="aircraft-card" onclick="openModal('b17', 'B-17 Flying Fortress', 'usa')">
+            <img src="img/B-17 Flying Fortress.jpg" alt="B-17 Flying Fortress" class="aircraft-image">
+            <div class="aircraft-info">
+                <h3 class="aircraft-name">B-17 Flying Fortress</h3>
+                <span class="aircraft-nation usa">United States</span>
+                <ul class="key-points">
+                    <li>Range: 2,000 miles</li>
+                    <li>Max Speed: 287 mph</li>
+                    <li>Armament: 13 × .50 caliber M2 Browning machine guns</li>
+                </ul>
+                <div class="battles">
+                    <h4>Key Battles:</h4>
+                    <p>• Schweinfurt-Regensburg mission (1943) - Strategic bombing campaign</p>
+                    <p>• Battle of the Bulge (1944) - Provided close air support</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Soviet Union -->
+        <div class="aircraft-card" onclick="openModal('il2', 'Il-2 Shturmovik', 'soviet')">
+            <img src="img/Ilyushin-2 Shturmovik ~ BFD.jpg" alt="Il-2 Shturmovik" class="aircraft-image">
+            <div class="aircraft-info">
+                <h3 class="aircraft-name">Il-2 Shturmovik</h3>
+                <span class="aircraft-nation soviet">Soviet Union</span>
+                <ul class="key-points">
+                    <li>Range: 600 miles</li>
+                    <li>Max Speed: 257 mph</li>
+                    <li>Armament: 2 × 23mm cannons, 2 × 7.62mm machine guns, rockets/bombs</li>
+                </ul>
+                <div class="battles">
+                    <h4>Key Battles:</h4>
+                    <p>• Battle of Kursk (1943) - Devastating ground attacks</p>
+                    <p>• Battle of Stalingrad (1942-43) - Close air support for Soviet troops</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="aircraft-card" onclick="openModal('yak3', 'Yak-3', 'soviet')">
+            <img src="img/Yakovlev Yak-3 D-FLAK Яковлев Як-3  Andreas Zeitler.jpg" alt="Yak-3" class="aircraft-image">
+            <div class="aircraft-info">
+                <h3 class="aircraft-name">Yak-3</h3>
+                <span class="aircraft-nation soviet">Soviet Union</span>
+                <ul class="key-points">
+                    <li>Range: 560 miles</li>
+                    <li>Max Speed: 407 mph</li>
+                    <li>Armament: 1 × 20mm cannon, 2 × 12.7mm machine guns</li>
+                </ul>
+                <div class="battles">
+                    <h4>Key Battles:</h4>
+                    <p>• Operation Bagration (1944) - Air superiority fighter</p>
+                    <p>• Vistula-Oder Offensive (1945) - Escorted ground attack aircraft</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Nazi Germany -->
+        <div class="aircraft-card" onclick="openModal('bf109', 'Bf 109', 'nazi')">
+            <img src="img/BF109 pic1.jpg" alt="Bf 109" class="aircraft-image">
+            <div class="aircraft-info">
+                <h3 class="aircraft-name">Bf 109</h3>
+                <span class="aircraft-nation nazi">Nazi Germany</span>
+                <ul class="key-points">
+                    <li>Range: 528 miles</li>
+                    <li>Max Speed: 398 mph</li>
+                    <li>Armament: 2 × 13mm machine guns, 1 × 20mm cannon</li>
+                </ul>
+                <div class="battles">
+                    <h4>Key Battles:</h4>
+                    <p>• Battle of Britain (1940) - Primary German fighter</p>
+                    <p>• Operation Barbarossa (1941) - Eastern Front operations</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="aircraft-card" onclick="openModal('stuka', 'Ju 87 Stuka', 'nazi')">
+            <img src="img/Ju 87 pic6.jpg" alt="Ju 87 Stuka" class="aircraft-image">
+            <div class="aircraft-info">
+                <h3 class="aircraft-name">Ju 87 Stuka</h3>
+                <span class="aircraft-nation nazi">Nazi Germany</span>
+                <ul class="key-points">
+                    <li>Range: 370 miles</li>
+                    <li>Max Speed: 242 mph</li>
+                    <li>Armament: 2 × 7.92mm machine guns, 1 × 1,100 lb bomb</li>
+                </ul>
+                <div class="battles">
+                    <h4>Key Battles:</h4>
+                    <p>• Blitzkrieg in Poland (1939) - Precision dive bombing</p>
+                    <p>• Battle of France (1940) - Terror weapon against ground forces</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Imperial Japan -->
+        <div class="aircraft-card" onclick="openModal('zero', 'A6M Zero', 'japan')">
+            <img src="img/Mitsubishi A6M “Zero”, el depredador aéreo nipón - Revista de Historia.jpg" alt="A6M Zero" class="aircraft-image">
+            <div class="aircraft-info">
+                <h3 class="aircraft-name">A6M Zero</h3>
+                <span class="aircraft-nation japan">Imperial Japan</span>
+                <ul class="key-points">
+                    <li>Range: 1,929 miles</li>
+                    <li>Max Speed: 331 mph</li>
+                    <li>Armament: 2 × 20mm cannons, 2 × 7.7mm machine guns</li>
+                </ul>
+                <div class="battles">
+                    <h4>Key Battles:</h4>
+                    <p>• Attack on Pearl Harbor (1941) - Primary fighter escort</p>
+                    <p>• Battle of Midway (1942) - Carrier-based operations</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="aircraft-card" onclick="openModal('g4m', 'G4M Betty', 'japan')">
+            <img src="img/Japanese Betty Bomber - Japan's Mitsubishi G4M bomber.jpg" alt="G4M Betty" class="aircraft-image">
+            <div class="aircraft-info">
+                <h3 class="aircraft-name">G4M Betty</h3>
+                <span class="aircraft-nation japan">Imperial Japan</span>
+                <ul class="key-points">
+                    <li>Range: 3,300 miles</li>
+                    <li>Max Speed: 266 mph</li>
+                    <li>Armament: 1 × 20mm cannon, 4 × 7.7mm machine guns, torpedo/bombs</li>
+                </ul>
+                <div class="battles">
+                    <h4>Key Battles:</h4>
+                    <p>• Sinking of HMS Prince of Wales (1941) - Torpedo attacks</p>
+                    <p>• Solomon Islands Campaign (1942-43) - Long-range bombing</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" class="modal-image">
+            <div class="modal-info">
+                <h2 id="modalTitle"></h2>
+                <div id="modalDetails"></div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>WW2 Aircraft Gallery &copy; 2023 | Historical Aviation Collection</p>
+    </footer>
+    
+    <script>
+        function openModal(id, name, nation) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDetails = document.getElementById('modalDetails');
+            
+            // Set image based on ID
+            let imgSrc = '';
+            switch(id) {
+                case 'p51':
+                    imgSrc = 'https://upload.wikimedia.org/wikipedia/commons/1/19/P-51_Mustang_edit1.jpg';
+                    break;
+                case 'b17':
+                    imgSrc = 'https://upload.wikimedia.org/wikipedia/commons/3/3c/B-17F_over_Germany%2C_1943-45.jpg';
+                    break;
+                case 'il2':
+                    imgSrc = 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Ilyushin_Il-2_%28AM-38%29_3-view.svg';
+                    break;
+                case 'yak3':
+                    imgSrc = 'https://upload.wikimedia.org/wikipedia/commons/8/8b/Yakovlev_Yak-3_2.jpg';
+                    break;
+                case 'bf109':
+                    imgSrc = 'https://upload.wikimedia.org/wikipedia/commons/7/79/Bundesarchiv_Bild_146-1972-036-09%2C_Flugzeug_Messerschmitt_Me_109.jpg';
+                    break;
+                case 'stuka':
+                    imgSrc = 'https://upload.wikimedia.org/wikipedia/commons/4/4c/Bundesarchiv_Bild_101I-646-5184-26%2C_Flugzeug_Junkers_Ju_87.jpg';
+                    break;
+                case 'zero':
+                    imgSrc = 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Mitsubishi_Zero_2.jpg';
+                    break;
+                case 'g4m':
+                    imgSrc = 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Mitsubishi_G4M_1.jpg';
+                    break;
+            }
+            
+            modalImg.src = imgSrc;
+            modalTitle.textContent = name;
+            
+            // Set nation color
+            let nationClass = '';
+            let nationName = '';
+            switch(nation) {
+                case 'usa':
+                    nationClass = 'usa';
+                    nationName = 'United States';
+                    break;
+                case 'soviet':
+                    nationClass = 'soviet';
+                    nationName = 'Soviet Union';
+                    break;
+                case 'nazi':
+                    nationClass = 'nazi';
+                    nationName = 'Nazi Germany';
+                    break;
+                case 'japan':
+                    nationClass = 'japan';
+                    nationName = 'Imperial Japan';
+                    break;
+            }
+            
+            // Set details based on aircraft
+            let detailsHTML = `<span class="aircraft-nation ${nationClass}">${nationName}</span>`;
+            
+            switch(id) {
+                case 'p51':
+                    detailsHTML += `
+                        <ul class="key-points">
+                            <li><strong>Role:</strong> Long-range escort fighter</li>
+                            <li><strong>Introduced:</strong> 1942</li>
+                            <li><strong>Range:</strong> 1,650 miles with external tanks</li>
+                            <li><strong>Max Speed:</strong> 437 mph</li>
+                            <li><strong>Armament:</strong> 6 × .50 caliber M2 Browning machine guns</li>
+                            <li><strong>Crew:</strong> 1</li>
+                        </ul>
+                        <div class="battles">
+                            <h4>Key Battles:</h4>
+                            <p><strong>Battle of Berlin (1944-45):</strong> The P-51's long range allowed it to escort bombers all the way to Berlin and back, helping to establish air superiority over Germany.</p>
+                            <p><strong>Operation Overlord (1944):</strong> Provided crucial air cover during the D-Day invasion, preventing Luftwaffe interference with Allied ground forces.</p>
+                        </div>
+                        <p>The P-51 Mustang is considered one of the best fighters of World War II. Its combination of speed, range, maneuverability, and firepower made it superior to most contemporary fighters.</p>
+                    `;
+                    break;
+                case 'b17':
+                    detailsHTML += `
+                        <ul class="key-points">
+                            <li><strong>Role:</strong> Heavy bomber</li>
+                            <li><strong>Introduced:</strong> 1938</li>
+                            <li><strong>Range:</strong> 2,000 miles</li>
+                            <li><strong>Max Speed:</strong> 287 mph</li>
+                            <li><strong>Armament:</strong> 13 × .50 caliber M2 Browning machine guns</li>
+                            <li><strong>Crew:</strong> 10</li>
+                        </ul>
+                        <div class="battles">
+                            <h4>Key Battles:</h4>
+                            <p><strong>Schweinfurt-Regensburg mission (1943):</strong> Part of the strategic bombing campaign against German industry, suffering heavy losses but proving the need for fighter escorts.</p>
+                            <p><strong>Battle of the Bulge (1944):</strong> Provided close air support to Allied ground forces during Germany's last major offensive in the West.</p>
+                        </div>
+                        <p>The B-17 Flying Fortress was known for its ability to take heavy damage and still return home. It dropped more bombs than any other U.S. aircraft in World War II.</p>
+                    `;
+                    break;
+                case 'il2':
+                    detailsHTML += `
+                        <ul class="key-points">
+                            <li><strong>Role:</strong> Ground attack aircraft</li>
+                            <li><strong>Introduced:</strong> 1941</li>
+                            <li><strong>Range:</strong> 600 miles</li>
+                            <li><strong>Max Speed:</strong> 257 mph</li>
+                            <li><strong>Armament:</strong> 2 × 23mm cannons, 2 × 7.62mm machine guns, rockets/bombs</li>
+                            <li><strong>Crew:</strong> 1-2</li>
+                        </ul>
+                        <div class="battles">
+                            <h4>Key Battles:</h4>
+                            <p><strong>Battle of Kursk (1943):</strong> The Il-2 played a crucial role in destroying German armor during the largest tank battle in history.</p>
+                            <p><strong>Battle of Stalingrad (1942-43):</strong> Provided close air support for Soviet troops in the brutal urban combat.</p>
+                        </div>
+                        <p>The Il-2 Shturmovik was the most produced military aircraft in history. Its armored cockpit earned it the nickname "Flying Tank" from Soviet pilots.</p>
+                    `;
+                    break;
+                case 'yak3':
+                    detailsHTML += `
+                        <ul class="key-points">
+                            <li><strong>Role:</strong> Fighter</li>
+                            <li><strong>Introduced:</strong> 1944</li>
+                            <li><strong>Range:</strong> 560 miles</li>
+                            <li><strong>Max Speed:</strong> 407 mph</li>
+                            <li><strong>Armament:</strong> 1 × 20mm cannon, 2 × 12.7mm machine guns</li>
+                            <li><strong>Crew:</strong> 1</li>
+                        </ul>
+                        <div class="battles">
+                            <h4>Key Battles:</h4>
+                            <p><strong>Operation Bagration (1944):</strong> The Yak-3 helped establish Soviet air superiority during this massive offensive that destroyed German Army Group Center.</p>
+                            <p><strong>Vistula-Oder Offensive (1945):</strong> Escorted ground attack aircraft during the rapid advance toward Berlin in the final months of the war.</p>
+                        </div>
+                        <p>The Yak-3 was one of the lightest and most maneuverable fighters of WW2, with excellent performance at low altitudes where most Eastern Front combat occurred.</p>
+                    `;
+                    break;
+                case 'bf109':
+                    detailsHTML += `
+                        <ul class="key-points">
+                            <li><strong>Role:</strong> Fighter</li>
+                            <li><strong>Introduced:</strong> 1937</li>
+                            <li><strong>Range:</strong> 528 miles</li>
+                            <li><strong>Max Speed:</strong> 398 mph</li>
+                            <li><strong>Armament:</strong> 2 × 13mm machine guns, 1 × 20mm cannon</li>
+                            <li><strong>Crew:</strong> 1</li>
+                        </ul>
+                        <div class="battles">
+                            <h4>Key Battles:</h4>
+                            <p><strong>Battle of Britain (1940):</strong> The primary German fighter during the failed attempt to gain air superiority over Britain.</p>
+                            <p><strong>Operation Barbarossa (1941):</strong> Achieved early air superiority against the Soviet Air Force at the start of the Eastern Front campaign.</p>
+                        </div>
+                        <p>The Bf 109 was the backbone of the Luftwaffe fighter force throughout WW2. More Bf 109s were built than any other fighter aircraft in history.</p>
+                    `;
+                    break;
+                case 'stuka':
+                    detailsHTML += `
+                        <ul class="key-points">
+                            <li><strong>Role:</strong> Dive bomber</li>
+                            <li><strong>Introduced:</strong> 1936</li>
+                            <li><strong>Range:</strong> 370 miles</li>
+                            <li><strong>Max Speed:</strong> 242 mph</li>
+                            <li><strong>Armament:</strong> 2 × 7.92mm machine guns, 1 × 1,100 lb bomb</li>
+                            <li><strong>Crew:</strong> 2</li>
+                        </ul>
+                        <div class="battles">
+                            <h4>Key Battles:</h4>
+                            <p><strong>Blitzkrieg in Poland (1939):</strong> The Stuka's precision dive bombing was instrumental in the rapid German victory.</p>
+                            <p><strong>Battle of France (1940):</strong> Its screaming sirens became a psychological weapon against Allied troops.</p>
+                        </div>
+                        <p>The Ju 87 Stuka was the most famous dive bomber of WW2. Its accuracy in hitting small targets made it effective in the early war years, though it became vulnerable as air defenses improved.</p>
+                    `;
+                    break;
+                case 'zero':
+                    detailsHTML += `
+                        <ul class="key-points">
+                            <li><strong>Role:</strong> Carrier-based fighter</li>
+                            <li><strong>Introduced:</strong> 1940</li>
+                            <li><strong>Range:</strong> 1,929 miles</li>
+                            <li><strong>Max Speed:</strong> 331 mph</li>
+                            <li><strong>Armament:</strong> 2 × 20mm cannons, 2 × 7.7mm machine guns</li>
+                            <li><strong>Crew:</strong> 1</li>
+                        </ul>
+                        <div class="battles">
+                            <h4>Key Battles:</h4>
+                            <p><strong>Attack on Pearl Harbor (1941):</strong> The Zero dominated the skies as Japan's primary fighter during the surprise attack.</p>
+                            <p><strong>Battle of Midway (1942):</strong> Despite early successes, many Zeros were lost when their carriers were sunk, marking a turning point in the Pacific War.</p>
+                        </div>
+                        <p>The A6M Zero was legendary for its maneuverability and range at the start of the war, but its lack of armor and self-sealing fuel tanks became liabilities as Allied fighters improved.</p>
+                    `;
+                    break;
+                case 'g4m':
+                    detailsHTML += `
+                        <ul class="key-points">
+                            <li><strong>Role:</strong> Medium bomber</li>
+                            <li><strong>Introduced:</strong> 1941</li>
+                            <li><strong>Range:</strong> 3,300 miles</li>
+                            <li><strong>Max Speed:</strong> 266 mph</li>
+                            <li><strong>Armament:</strong> 1 × 20mm cannon, 4 × 7.7mm machine guns, torpedo/bombs</li>
+                            <li><strong>Crew:</strong> 7</li>
+                        </ul>
+                        <div class="battles">
+                            <h4>Key Battles:</h4>
+                            <p><strong>Sinking of HMS Prince of Wales (1941):</strong> G4Ms played a key role in sinking the British battleship, demonstrating the vulnerability of capital ships to air attack.</p>
+                            <p><strong>Solomon Islands Campaign (1942-43):</strong> Used in long-range bombing missions, though its lack of armor made it vulnerable to Allied fighters.</p>
+                        </div>
+                        <p>The G4M Betty was Japan's primary land-based bomber. Its long range was impressive, but its lack of protective features earned it the nickname "the Flying Lighter" from Allied pilots.</p>
+                    `;
+                    break;
+            }
+            
+            modalDetails.innerHTML = detailsHTML;
+            
+            // Show modal
+            modal.style.display = "block";
+            setTimeout(() => { modal.style.opacity = "1"; }, 10);
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.opacity = "0";
+            setTimeout(() => { modal.style.display = "none"; }, 300);
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

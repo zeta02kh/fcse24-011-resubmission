@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wings of Hope Museum - Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            overflow-x: hidden;
+            color: #fff;
+        }
+        
+        #video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            filter: brightness(0.5);
+        }
+        
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d4af37;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+        
+        main {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            padding: 50px 0;
+        }
+        
+        .contact-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            backdrop-filter: blur(5px);
+        }
+        
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #d4af37;
+            text-align: center;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .info-box {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+        
+        .info-box h3 {
+            margin-bottom: 10px;
+            color: #d4af37;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: white;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-form button {
+            background-color: #d4af37;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .contact-form button:hover {
+            background-color: #f1c40f;
+        }
+        
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+
+            }
+            
+            .info-box {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <video autoplay muted loop id="video-background">
+        <source src="WW2_ Real Footage, No Music, Pure Sound.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Wings of Hope Museum</div>
+                <ul class="nav-links">
+                    <li><a href="indexHTML.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="nation.html">Nation</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <div class="contact-container">
+                <h1>Contact Us</h1>
+                
+                <div class="contact-info">
+                    <div class="info-box">
+                        <h3>Location</h3>
+                        <p>123 Aviation Way<br>Dayton, OH 45433<br>United States</p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h3>Hours</h3>
+                        <p>Monday - Friday: 9AM - 5PM<br>
+                        Saturday: 10AM - 6PM<br>
+                        Sunday: 11AM - 4PM</p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h3>Contact Info</h3>
+                        <p>Phone: (555) 123-4567<br>
+                        Email: info@wingsofhopemuseum.org<br>
+                        Fax: (555) 123-4568</p>
+                    </div>
+                </div>
+                
+                <form class="contact-form" action="mailto:info@wingsofvalormuseum.org" method="post" enctype="text/plain">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Wings of Hope Museum. All rights reserved.</p>
+            <p>Preserving the legacy of WWII aviation heroes.</p>
+        </div>
+    </footer>
+</body>
+</html>

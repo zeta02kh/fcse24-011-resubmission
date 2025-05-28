@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wings of hope - WWII Aircraft Museum</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            overflow-x: hidden;
+            color: white;
+        }
+        
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        header {
+            padding: 2rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+        
+        .nations-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .nation-card {
+            width: 45%;
+            min-width: 300px;
+            margin: 1rem;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        
+        .nation-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .nation-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .nation-flag {
+            width: 60px;
+            height: 40px;
+            margin-right: 1rem;
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .nation-title {
+            font-size: 1.5rem;
+        }
+        
+        .aircraft-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nation-card {
+                width: 90%;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="WW2_ Real Footage, No Music, Pure Sound.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay"></div>
+    </div>
+    
+    <header>
+        <h1>Wings of hope</h1>
+        <p class="subtitle">World War II Aircraft Museum - The Nations</p>
+    </header>
+    
+    <div class="nations-container">
+        <!-- Imperial Japan -->
+        <div class="nation-card">
+            <div class="nation-header">
+                <img src="img/Flag Of Japan Empire _ 大日本帝国の国旗.jpg" alt="Imperial Japan Flag" class="nation-flag">
+                <h2 class="nation-title">Imperial Japan</h2>
+            </div>
+            <img src="zero_aircraft.jpg" alt="Mitsubishi A6M Zero" class="aircraft-image">
+            <p>The Empire of Japan entered World War II with the attack on Pearl Harbor in December 1941, though its military campaigns in China had begun earlier in 1937. Japan sought to establish dominance in East Asia and the Pacific under the concept of the "Greater East Asia Co-Prosperity Sphere."</p>
+            <p>Japanese aircraft like the Mitsubishi A6M Zero were initially superior to Allied planes, with exceptional range and maneuverability. However, industrial limitations and loss of experienced pilots led to declining effectiveness as the war progressed.</p>
+            <p>Japan surrendered in August 1945 after the atomic bombings of Hiroshima and Nagasaki, ending its imperial ambitions and leading to occupation and democratization.</p>
+        </div>
+        
+        <!-- Soviet Union -->
+        <div class="nation-card">
+            <div class="nation-header">
+                <img src="img/🔥 Soviet Wallpapers HD on WallpaperSafari.jpg"Soviet Union Flag" class="nation-flag">
+                <h2 class="nation-title">Soviet Union</h2>
+            </div>
+            <img src="il2_aircraft.jpg" alt="Ilyushin Il-2 Shturmovik" class="aircraft-image">
+            <p>The Soviet Union entered WWII after being invaded by Nazi Germany in June 1941 (Operation Barbarossa), despite having signed a non-aggression pact in 1939. The Eastern Front became the largest and bloodiest theater of war.</p>
+            <p>Soviet aircraft like the Ilyushin Il-2 Shturmovik (the most produced military aircraft in history) and Yak-3 fighter played crucial roles. Soviet industry, relocated east of the Urals, produced enormous quantities of effective, simple weapons.</p>
+            <p>The USSR suffered approximately 27 million deaths but emerged as a superpower, having pushed German forces back to Berlin by 1945 and establishing control over Eastern Europe.</p>
+        </div>
+        
+        <!-- United States -->
+        <div class="nation-card">
+            <div class="nation-header">
+                <img src="img/United States of America Large Flag.jpg" alt="US Flag" class="nation-flag">
+                <h2 class="nation-title">United States of America</h2>
+            </div>
+            <img src="mustang_aircraft.jpg" alt="P-51 Mustang" class="aircraft-image">
+            <p>The United States entered WWII after the Japanese attack on Pearl Harbor on December 7, 1941. America's industrial might and technological innovation proved decisive in both the European and Pacific theaters.</p>
+            <p>Iconic U.S. aircraft included the B-17 Flying Fortress, P-51 Mustang, and the atomic bomb-carrying B-29 Superfortress. American production capacity allowed for overwhelming numbers of high-quality aircraft and the training of thousands of pilots.</p>
+            <p>The U.S. emerged from the war as the world's leading economic and military power, with atomic capabilities and bases around the globe, marking the beginning of the "American Century."</p>
+        </div>
+        
+        <!-- Nazi Germany -->
+        <div class="nation-card">
+            <div class="nation-header">
+                <img src="img/NAZI" alt="Nazi Germany Flag" class="nation-flag">
+                <h2 class="nation-title">Nazi Germany</h2>
+            </div>
+            <img src="bf109_aircraft.jpg" alt="Messerschmitt Bf 109" class="aircraft-image">
+            <p>Nazi Germany, under Adolf Hitler, initiated World War II in Europe with the invasion of Poland in September 1939. The regime sought to establish German hegemony in Europe and carry out genocidal policies against Jews and other groups.</p>
+            <p>Germany produced technologically advanced aircraft like the Messerschmitt Bf 109, Focke-Wulf Fw 190, and the first operational jet fighter (Me 262). However, strategic bombing of German industry and fuel supplies, along with attrition on multiple fronts, crippled the Luftwaffe.</p>
+            <p>Germany surrendered unconditionally in May 1945 after Soviet forces captured Berlin, leading to the country's division and the Nuremberg trials for Nazi leaders.</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2023 Wings of hope WWII Aircraft Museum | All Rights Reserved</p>
+        <p>Dedicated to preserving the history and lessons of the Second World War</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Wings of Valor WWII Aircraft Museum</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            overflow-x: hidden;
+            color: #fff;
+        }
+        
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+        
+        header {
+            padding: 2rem;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #e8c252;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-style: italic;
+            color: #aaa;
+        }
+        
+        nav {
+            margin-top: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: #e8c252;
+            color: #000;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #e8c252;
+            text-align: center;
+            border-bottom: 1px solid #e8c252;
+            padding-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: #e8c252;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .mission-statement {
+            font-style: italic;
+            font-size: 1.2rem;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: rgba(232, 194, 82, 0.1);
+            border-left: 4px solid #e8c252;
+        }
+        
+        .collection-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .aircraft-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .aircraft-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(232, 194, 82, 0.2);
+        }
+        
+        .aircraft-card h3 {
+            color: #e8c252;
+            margin-bottom: 0.5rem;
+        }
+        
+        .aircraft-card .type {
+            color: #aaa;
+            font-style: italic;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.9);
+            margin-top: 3rem;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: #e8c252;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop>
+            <!-- Replace with your actual video file -->
+            <source src="WW2_ Real Footage, No Music, Pure Sound.mp4" type="video/mp4">
+            <!-- Fallback image if video doesn't load -->
+            <img src="ww2-aircraft-fallback.jpg" alt="WWII Aircraft Background">
+        </video>
+        <div class="overlay"></div>
+    </div>
+    
+    <header>
+        <div class="logo">Wings of Hope</div>
+        <div class="tagline">Preserving the Legacy of WWII Aviation</div>
+        <nav>
+            <ul>
+                <li><a href="indexHTML.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="gallery.html">gallery</a></li>
+                <li><a href="nation.html">nation</a></li>
+                <li><a href="contact us.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <h1>About Our Museum</h1>
+        
+        <p>Founded in 1985, the Wings of Hope WWII Aircraft Museum is dedicated to preserving, restoring, and displaying aircraft from the Second World War. Our collection represents one of the most comprehensive assemblies of WWII-era aircraft in the world, with examples from all major combatant nations.</p>
+        
+        <div class="mission-statement">
+            "Our mission is to honor the courage and sacrifice of those who served by preserving these magnificent aircraft and sharing their stories with future generations."
+        </div>
+        
+        <h2>Our History</h2>
+        <p>What began as a small private collection of WWII memorabilia has grown into a world-class aviation museum. Founder Colonel James Henderson (USAF Ret.) started with just one restored P-51 Mustang in a rented hangar. Today, our 150,000 square foot facility houses over 50 fully restored aircraft, with many more in various stages of restoration.</p>
+        
+        <h2>The Collection</h2>
+        <p>Our collection includes rare and historically significant aircraft from all theaters of WWII. Many of our aircraft are the last surviving examples of their type, painstakingly restored to their original wartime configuration. Several are still airworthy and participate in airshows across the country.</p>
+        
+        <h2>Collection Highlights</h2>
+        <div class="collection-highlights">
+            <div class="aircraft-card">
+                <h3>P-51D Mustang</h3>
+                <span class="type">American Fighter</span>
+                <p>Our "Old Crow" is one of only three P-51s still flying with its original Merlin engine. This aircraft flew 76 combat missions over Europe.</p>
+            </div>
+            
+            <div class="aircraft-card">
+                <h3>Spitfire Mk.IX</h3>
+                <span class="type">British Fighter</span>
+                <p>This Spitfire served with RAF No. 611 Squadron and participated in the D-Day operations. Restored to its 1944 markings.</p>
+            </div>
+            
+            <div class="aircraft-card">
+                <h3>B-17G Flying Fortress</h3>
+                <span class="type">American Bomber</span>
+                <p>"Memphis Belle II" is one of only about a dozen airworthy B-17s remaining. Our ground crew maintains it in pristine condition.</p>
+            </div>
+            
+            <div class="aircraft-card">
+                <h3>Messerschmitt Bf 109</h3>
+                <span class="type">German Fighter</span>
+                <p>This rare G-6 variant was recovered from a Russian lake in 1991. After a 12-year restoration, it's now one of our most prized exhibits.</p>
+            </div>
+            
+            <div class="aircraft-card">
+                <h3>Mitsubishi A6M Zero</h3>
+                <span class="type">Japanese Fighter</span>
+                <p>One of only three original Zeros still flying worldwide. This aircraft was recovered from the Marshall Islands in 1974.</p>
+            </div>
+            
+            <div class="aircraft-card">
+                <h3>Consolidated PBY Catalina</h3>
+                <span class="type">American Patrol Bomber</span>
+                <p>Our "Black Cat" Catalina is painted in its distinctive night operations scheme and is fully amphibious.</p>
+            </div>
+        </div>
+        
+        <h2>Education & Preservation</h2>
+        <p>Beyond displaying aircraft, we're committed to educating visitors about WWII aviation history. Our museum offers:</p>
+        <ul style="margin-left: 2rem; line-height: 1.6;">
+            <li>Guided tours led by veteran docents</li>
+            <li>Flight demonstrations during summer months</li>
+            <li>Restoration workshops where visitors can watch our team work</li>
+            <li>Oral history recordings from WWII veterans</li>
+            <li>Educational programs for schools and youth groups</li>
+        </ul>
+        
+        <p>We also operate one of the most advanced aircraft restoration facilities in the world, where we bring these historic aircraft back to life using original techniques and materials whenever possible.</p>
+    </div>
+    
+    <footer>
+        <p>Wings of Hope WWII Aircraft Museum</p>
+        <p>123 Aviation Way, Dayton, Ohio 45400</p>
+        <p>Open Tuesday-Sunday 9:00 AM - 5:00 PM</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2023 Wings of Hope Museum. All Rights Reserved.</p>
+    </footer>
+    
+    <!-- Font Awesome for icons (optional) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
